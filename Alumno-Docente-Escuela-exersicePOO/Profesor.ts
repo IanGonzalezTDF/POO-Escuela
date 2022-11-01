@@ -1,9 +1,9 @@
 import { Alumno } from "./Alumno";
 
 export class Profesor {
-    private nombre:string;
-    private apellido:string;
-    private listadoAlumnos:Alumno[];
+    protected nombre:string;
+    protected apellido:string;
+    protected listadoAlumnos:Alumno[];
 
     constructor(pNombre:string,pApellido:string,pListadoAl:Alumno[]){
         this.nombre=pNombre;

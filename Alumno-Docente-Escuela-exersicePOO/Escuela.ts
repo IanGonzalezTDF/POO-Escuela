@@ -1,16 +1,19 @@
 import { Profesor } from "./Profesor";
-import { Alumno } from "./Alumno"
+import { Alumno } from "./Alumno";
+import { Preceptor } from "./Preceptor";
 
 
 export class Escuela {
     private nombreEscuela:string;
     private listadoAlumnos:Alumno[];
     private listadoProfesores:Profesor[];
+    private listadoPreceptores:Preceptor[];
 
-    constructor (pNombre:string,pListadoAlumnos:Alumno[],pListadoProfesores:Profesor[]){
+    constructor (pNombre:string,pListadoAlumnos:Alumno[],pListadoProfesores:Profesor[],pListadoPreceptor:Preceptor[]){
         this.nombreEscuela = pNombre;
         this.listadoAlumnos = pListadoAlumnos;
         this.listadoProfesores = pListadoProfesores;
+        this.listadoPreceptores = pListadoPreceptor;
     }   
 
     public getNombreEscuela():string {
@@ -38,6 +41,21 @@ export class Escuela {
         }
     }
 
+    public contratarPreceptor(pPreceptor:Preceptor):void{
+        this.listadoPreceptores.push(pPreceptor);
+        console.log(`Preceptor/a ${pPreceptor.getApellido()} fue contradado/a`);
+    }
+
+    public despedirPreceptor(pPreceptor:Preceptor):void{
+        for(let i:number = 0; i<this.listadoPreceptores.length;i++){
+            if(pPreceptor.getApellido() == this.listadoPreceptores[i].getApellido()){
+                this.listadoPreceptores.splice(i,1)
+                console.log(`Preceptor/a Despedido/a`)
+            }
+            else (console.log(`No se encontro al/a preceptor/a`));
+        }
+    }
+    
     public matricularAlumno(pAlumno:Alumno):void{
         this.listadoAlumnos.push(pAlumno);
     }
